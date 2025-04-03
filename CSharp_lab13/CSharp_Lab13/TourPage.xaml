@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CSharp_Lab13.TourPage"
+             Title="Tour Management">
+    <FlexLayout Direction="Column">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400">
+            <Label Text="Туры:"/>
+            <Entry x:Name="destinationEntryField" Placeholder="Destination"/>
+            <Entry x:Name="priceEntryField" Placeholder="Price" Keyboard="Numeric"/>
+            <Entry x:Name="descriptionEntryField" Placeholder="Description"/>
+            <Button x:Name="saveButton" Text="Save" Clicked="saveButton_Clicked"/>
+        </VerticalStackLayout>
+
+        <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="5">
+                            <Label Text="{Binding TourId, StringFormat='ID: {0}'}"/>
+                            <Label Text="{Binding Destination, StringFormat='Destination: {0}'}"/>
+                            <Label Text="{Binding Price, StringFormat='Price: {0:C}'}"/>
+                            <Label Text="{Binding Description, StringFormat='Description: {0}'}"/>
+                            <Label Text="==========================="/>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </FlexLayout>
+</ContentPage>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CSharp_Lab13.BookingPage"
+             Title="Управление Бронированиями">
+    <FlexLayout Direction="Column">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400">
+            <Label Text="Детали бронирования:"/>
+            <Picker x:Name="clientPicker" Title="Выберите клиента" SelectedIndexChanged="ClientPicker_SelectedIndexChanged"/>
+            <Picker x:Name="tourPicker" Title="Выберите тур" SelectedIndexChanged="TourPicker_SelectedIndexChanged"/>
+            <Entry x:Name="numberOfPeopleEntryField" Placeholder="Количество людей" Keyboard="Numeric"/>
+            <Entry x:Name="descriptionEntryField" Placeholder="Описание"/>
+            <Button x:Name="saveButton" Text="Save" Clicked="saveButton_Clicked"/>
+            <Label x:Name="CounterLabel" Text="0" FontSize="24" HorizontalOptions="Center"/>
+            <Button Text="Увеличить счётчик" Clicked="OnSaveButtonClicked"/>
+        </VerticalStackLayout>
+        <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="5">
+                            <Label Text="{Binding ClientId, StringFormat='Клиент ID: {0}'}"/>
+                            <Label Text="{Binding TourId, StringFormat='Тур ID: {0}'}"/>
+                            <Label Text="{Binding NumberOfPeople, StringFormat='Количество людей: {0}'}"/>
+                            <Label Text="{Binding Description, StringFormat='Описание: {0}'}"/>
+                            <Label Text="==========================="/>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </FlexLayout>
+</ContentPage>
